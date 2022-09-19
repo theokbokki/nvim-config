@@ -1,0 +1,23 @@
+{
+	"name": "my-snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language" : "php",
+				"path" : "./laravel/blade-class.json"
+			},	
+			{
+				"language" : "blade",
+				"path" : "./laravel/blade.json"
+			},	
+			{
+				"language" : "blade",
+				"path" : "./laravel/helpers.json"
+			},	
+			{
+				"language" : "blade",
+				"path" : "./laravel/livewire.json"
+			}	
+		]
+	}
+}
