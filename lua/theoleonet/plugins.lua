@@ -34,6 +34,7 @@ return packer.startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim' -- A library of useful lua functions used by many plugins
+	use 'rcarriga/nvim-notify'
 
 	-- Themes
 	use {
@@ -67,6 +68,9 @@ return packer.startup(function(use)
 		'gbprod/phpactor.nvim',
 		run = require("phpactor.handler.update"),
 	}
+	use 'akinsho/flutter-tools.nvim' -- Help for flutter development
+	use 'mattn/emmet-vim'
+  use 'jose-elias-alvarez/typescript.nvim'
 
 	-- Fuzzy finder + file explorer
 	use 'nvim-telescope/telescope.nvim' -- Highly extendable fuzzy finder over lists
@@ -78,6 +82,12 @@ return packer.startup(function(use)
 
 	-- Comments
 	use 'numToStr/Comment.nvim' -- Smart and powerful comment plugin for neovim
+
+	-- Markdown editor
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function() vim.fn["mkdp#util#install"]() end,
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

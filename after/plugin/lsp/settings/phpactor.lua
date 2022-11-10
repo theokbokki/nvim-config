@@ -3,6 +3,13 @@ if not ok then
 	return
 end
 
+local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp then
+	return
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 phpactor.setup {
 	lspconfig = {
 		options = {
@@ -35,3 +42,5 @@ phpactor.setup {
 		}
 	}
 }
+
+capabilities = cmp_nvim_lsp.default_capabilities

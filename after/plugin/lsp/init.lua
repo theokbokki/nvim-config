@@ -13,7 +13,8 @@ local servers = {
 	"html",
 	"cssls",
 	"emmet_ls",
-	"tsserver",
+	"marksman",
+	"tailwindcss",
 }
 
 mason_lspconfig.setup({

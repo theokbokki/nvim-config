@@ -5,6 +5,10 @@ end
 
 local actions = require('telescope.actions')
 
+local function telescope_buffer_dir()
+	return vim.fn.expand('%:p:h')
+end
+
 telescope.setup {
 	defaults = {
 		-- Default configuration for telescope goes here:
@@ -49,10 +53,15 @@ telescope.setup {
 		},
 	},
 }
-
-telescope.load_extension('file_browser')
+telescope.load_extension 'file_browser'
 
 vim.keymap.set('n', '<leader>f', '<cmd>Telescope find_files<cr>')
 vim.keymap.set('n', '<leader>g', '<cmd>Telescope live_grep<cr>')
 vim.keymap.set('n', '<leader>b', '<cmd>Telescope buffers<cr>')
-vim.keymap.set('n', '<leader>e', '<cmd>Telescope file_browser<cr>')
+vim.keymap.set('n', '<leader>e', function()
+	telescope.extensions.file_browser.file_browser({
+		path = "%:p:h",
+		cwd = telescope_buffer_dir(),
+		respect_gitignore = false,
+	})
+end)

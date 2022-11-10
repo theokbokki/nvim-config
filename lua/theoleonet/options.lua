@@ -1,6 +1,7 @@
 local options = {
 	autoindent = true,
 	clipboard = 'unnamedplus',
+	cmdheight = 0,
 	laststatus = 0,
 	linebreak = true,
 	numberwidth = 6,

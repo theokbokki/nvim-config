@@ -17,3 +17,6 @@ map('', '<C-h>', '<C-w>h')
 map('', '<C-k>', '<C-w>k')
 map('', '<C-j>', '<C-w>j')
 map('', '<C-l>', '<C-w>l')
+
+-- Emmet
+vim.cmd 'imap <expr> <leader><tab> emmet#expandAbbrIntelligent("<tab>")'
