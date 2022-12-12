@@ -15,6 +15,7 @@ local servers = {
 	"emmet_ls",
 	"marksman",
 	"tailwindcss",
+	"jsonls"
 }
 
 mason_lspconfig.setup({
