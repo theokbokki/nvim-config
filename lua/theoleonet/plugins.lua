@@ -32,7 +32,7 @@ end
 -- Plugins
 return packer.startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+	use 'wbthomason/packer.nvim' -- A 100% lua plugin manager for neovim
 	use 'nvim-lua/plenary.nvim' -- A library of useful lua functions used by many plugins
 	use 'rcarriga/nvim-notify'
 
@@ -88,6 +88,11 @@ return packer.startup(function(use)
 		"iamcco/markdown-preview.nvim",
 		run = function() vim.fn["mkdp#util#install"]() end,
 	})
+	-- Testing
+	use 'vim-test/vim-test'
+
+	-- Terminal
+	use 'doums/oterm.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
