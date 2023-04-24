@@ -1,27 +1,49 @@
-local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
-if not lspconfig_ok then
+local mason_ok, mason = pcall(require, 'mason')
+if not mason_ok then
 	return
 end
+
+mason.setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗"
+		}
+	}
+})
 
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not mason_lspconfig_ok then
 	return
 end
 
+mason_lspconfig.setup({
+	ensure_installed = {
+	},
+})
+
+
+local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
+if not lspconfig_ok then
+	return
+end
+
+
 local servers = {
-	"sumneko_lua",
+	"lua_ls",
 	"html",
 	"cssls",
 	"emmet_ls",
 	"marksman",
 	"tailwindcss",
-	"jsonls"
+	"jsonls",
+	"vuels",
+	"tsserver",
+	"svelte",
 }
 
-mason_lspconfig.setup({
-	ensure_installed = servers,
-})
-
+vim.diagnostic.config({ virtual_text = false })
 
 for _, server in pairs(servers) do
 	local opts = {

@@ -1,17 +1,11 @@
-local ok_flutter_tools, flutter_tools = pcall(require, 'flutter-tools')
-if not ok_flutter_tools then
+local ok, rust_tools = pcall(require, "rust-tools")
+
+if not ok then
 	return
 end
 
-local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp then
-	return
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-flutter_tools.setup {
-	lsp = {
+rust_tools.setup {
+	server = {
 		on_attach = function(client, bufnr)
 			local opts = { noremap = true, silent = true }
 			vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
@@ -36,5 +30,3 @@ flutter_tools.setup {
 		end,
 	}
 }
-
-capabilities = cmp_nvim_lsp.default_capabilities
