@@ -14,16 +14,17 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ","
 
 require("lazy").setup {
+	-- Utilities
+	'nvim-lua/plenary.nvim',
+
 	-- Colorschemes
 	'chriskempson/base16-vim', -- For writing
 	'junegunn/seoul256.vim',   -- For coding
 	'xiyaowong/nvim-transparent', -- Remove all background colors to make nvim transparent
 
-	-- FuzzyFinder
-	{
-		'nvim-telescope/telescope.nvim',
-		dependencies = { 'nvim-lua/plenary.nvim' }
-	},
+	-- FuzzyFinder / Moving around
+	'nvim-telescope/telescope.nvim',
+	'ThePrimeagen/harpoon',
 
 	-- Syntax highlighting
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },

@@ -3,6 +3,10 @@ local map = vim.keymap.set
 -- Remap <ESC> to jj
 map('i', 'jj', '<ESC>')
 
+-- Move selected line / block of text in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Netrw remaps
 map('n', '<leader>e', ':Ex<CR>')
 
