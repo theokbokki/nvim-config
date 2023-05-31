@@ -11,7 +11,7 @@ transparent.setup {
 		'SignColumn', 'CursorLineNr', 'EndOfBuffer',
 	},
 	extra_groups = {
-		"NormalFloat", "TelescopePrompt"
+		"NormalFloat", "TelescopePrompt", "FloatBorder"
 	},                -- table: additional groups that should be cleared
 	exclude_groups = {}, -- table: groups you don't want to clear}
 }
@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd(
 			vim.defer_fn(function()
 				vim.cmd('TransparentEnable')
 				vim.cmd('highlight GitSignsAdd guibg=NONE')
-			end, 250)
+			end, 0)
 		end
 	}
 )

@@ -3,7 +3,24 @@ if not ok then
 	return
 end
 
-lsp.preset("recommended")
+lsp.preset({
+	float_border = 'rounded',
+	call_servers = 'local',
+	configure_diagnostics = true,
+	setup_servers_on_start = true,
+	set_lsp_keymaps = {
+		preserve_mappings = false,
+		omit = {},
+	},
+	manage_nvim_cmp = {
+		set_sources = 'recommended',
+		set_basic_mappings = true,
+		set_extra_mappings = false,
+		use_luasnip = true,
+		set_format = true,
+		documentation_window = true,
+	},
+})
 
 lsp.ensure_installed({
 	"lua_ls",
@@ -77,3 +94,7 @@ lsp.setup()
 vim.diagnostic.config({
 	virtual_text = false
 })
+
+require('lspconfig.ui.windows').default_options = {
+	border = "single"
+}

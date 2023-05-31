@@ -73,14 +73,14 @@ function ToggleZen()
 		if zenModeExecuted == 0 then
 			vim.defer_fn(function()
 				vim.cmd('ZenMode')
-			end, 500)
+			end, 0)
 			zenModeExecuted = 1;
 		end
 	end
 end
 
 vim.api.nvim_create_autocmd(
-	"BufReadPost",
+	"BufEnter",
 	{
 		pattern = '*',
 		callback = function()
