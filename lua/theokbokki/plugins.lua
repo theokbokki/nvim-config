@@ -25,6 +25,18 @@ require("lazy").setup {
 	-- FuzzyFinder / Moving around
 	'nvim-telescope/telescope.nvim',
 	'ThePrimeagen/harpoon',
+	{
+		'gelguy/wilder.nvim',
+		dependencies = {
+			{
+				'liuchengxu/vim-clap',
+				build =
+				':Clap install-binary' -- This command doesn't really work, instead do :call clap#installer#build_maple()
+			},
+			'romgrk/fzy-lua-native',
+			'nvim-tree/nvim-web-devicons'
+		},
+	},
 
 	-- Syntax highlighting
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
