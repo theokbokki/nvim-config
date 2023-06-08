@@ -65,8 +65,24 @@ lsp.set_sign_icons({
 	info = '🔊'
 })
 
+local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+local enable_format_on_save = function(_, bufnr)
+	vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = augroup_format,
+		buffer = bufnr,
+		callback = function()
+			vim.lsp.buf.format({ bufnr = bufnr })
+		end,
+	})
+end
+
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
+
+	if client.supports_method("textDocument/formatting") then
+		enable_format_on_save(client, bufnr)
+	end
 
 	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 	vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -98,3 +114,42 @@ vim.diagnostic.config({
 require('lspconfig.ui.windows').default_options = {
 	border = "single"
 }
+
+local null_ok, null_ls = pcall(require, "null-ls")
+if not null_ok then return end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
+
+null_ls.setup {
+	sources = {
+	},
+	on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					lsp_formatting(bufnr)
+				end,
+			})
+		end
+	end
+}
+
+vim.api.nvim_create_user_command(
+	'DisableLspFormatting',
+	function()
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
+	end,
+	{ nargs = 0 }
+)

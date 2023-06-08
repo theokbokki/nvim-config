@@ -16,6 +16,3 @@ for k, v in pairs(options) do
 end
 
 vim.g.mapleader = ","
-
--- Format on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]

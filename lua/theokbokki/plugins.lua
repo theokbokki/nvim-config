@@ -69,7 +69,9 @@ require("lazy").setup {
 			{ 'rafamadriz/friendly-snippets' },
 		}
 	},
+	'jose-elias-alvarez/null-ls.nvim',
 	'mattn/emmet-vim',
+	'MunifTanjim/prettier.nvim',
 	'Exafunction/codeium.vim',
 	{
 		"adalessa/laravel.nvim",
