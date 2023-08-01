@@ -3,7 +3,6 @@ if not ok then
 	return
 end
 
-
 local actions = require('telescope.actions')
 
 telescope.setup {
@@ -34,3 +33,6 @@ vim.keymap.set('n', '<leader>sh', '<cmd>Telescope search_history<cr>')
 vim.keymap.set('n', '<leader>lr', '<cmd>Telescope lsp_references<cr>')
 vim.keymap.set('n', '<leader>d', '<cmd>Telescope diagnostics<cr>')
 vim.keymap.set('n', '<leader>ld', '<cmd>Telescope lsp_definitions<cr>')
+vim.keymap.set('n', '<leader>y', '<cmd>Telescope yank_history<cr>')
+
+telescope.load_extension('yank_history')

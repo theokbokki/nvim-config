@@ -80,7 +80,7 @@ function ToggleZen()
 end
 
 vim.api.nvim_create_autocmd(
-	"BufEnter",
+	"BufReadPost",
 	{
 		pattern = '*',
 		callback = function()

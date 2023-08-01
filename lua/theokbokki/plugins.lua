@@ -22,7 +22,11 @@ require("lazy").setup {
 	'junegunn/seoul256.vim',   -- For coding
 	'xiyaowong/nvim-transparent', -- Remove all background colors to make nvim transparent
 
-	-- FuzzyFinder / Moving around
+	-- FuzzyFinder / Moving around (between files)
+	{
+		'echasnovski/mini.files',
+		version = false
+	},
 	'nvim-telescope/telescope.nvim',
 	'ThePrimeagen/harpoon',
 	{
@@ -101,6 +105,9 @@ require("lazy").setup {
 	},
 	'jwalton512/vim-blade',
 
+	-- Clipboard management
+	'gbprod/yanky.nvim',
+
 	-- Git
 	'lewis6991/gitsigns.nvim',
 	'tpope/vim-fugitive',
@@ -109,7 +116,7 @@ require("lazy").setup {
 	'windwp/nvim-autopairs',
 	'kylechui/nvim-surround',
 
-	-- Moving around
+	-- Moving around (in file)
 	{
 		'ggandor/leap.nvim',
 		dependencies = {
@@ -131,5 +138,5 @@ require("lazy").setup {
 		'folke/zen-mode.nvim',
 		requires = { 'xiyaowong/nvim-transparent' }
 	},
-	'junegunn/limelight.vim',
+	'folke/twilight.nvim',
 }

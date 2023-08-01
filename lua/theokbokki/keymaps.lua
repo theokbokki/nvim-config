@@ -7,8 +7,8 @@ map('i', 'jj', '<ESC>')
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Netrw remaps
-map('n', '<leader>e', ':Ex<CR>')
+-- Open file explorer
+map('n', '<leader>e', ':lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>')
 
 -- Select all
 map('n', '<C-a>', 'gg<S-v>G')

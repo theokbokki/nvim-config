@@ -3,5 +3,5 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
-	autocmd BufEnter *.md colorscheme base16-ia-light
+	autocmd BufEnter *.md colorscheme base16-ia-light | TwilightEnable
 ]]

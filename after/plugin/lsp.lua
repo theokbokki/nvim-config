@@ -30,7 +30,6 @@ lsp.ensure_installed({
 	"marksman",
 	"tailwindcss",
 	"jsonls",
-	"vuels",
 	'rust_analyzer',
 	"tsserver",
 	"phpactor",
@@ -131,6 +130,8 @@ end
 
 null_ls.setup {
 	sources = {
+		null_ls.builtins.formatting.blade_formatter,
+		null_ls.builtins.formatting.pint
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
