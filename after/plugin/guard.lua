@@ -1,0 +1,18 @@
+-- local ok, guard = pcall(require, 'guard')
+--
+-- if not ok then return end
+--
+-- local ft = require('guard.filetype')
+--
+-- ft('php'):fmt({
+-- 	cmd = 'pint',
+-- 	args = {
+-- 		"--no-interaction",
+-- 		"--quiet",
+-- 	}
+-- })
+--
+-- guard.setup {
+-- 	fmt_on_save = true,
+-- 	lsp_as_default_formatter = true,
+-- }

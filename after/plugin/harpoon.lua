@@ -1,7 +1,6 @@
 local ok = pcall(require, 'harpoon')
-if not ok then
-	return
-end
+
+if not ok then return end
 
 local mark = require('harpoon.mark')
 local ui = require('harpoon.ui')

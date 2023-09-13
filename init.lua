@@ -1,3 +1,3 @@
-require("theokbokki.options")
-require("theokbokki.keymaps")
-require("theokbokki.plugins")
+require("theokbokki.options");
+require("theokbokki.keymaps");
+require("theokbokki.plugins");

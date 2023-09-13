@@ -11,132 +11,103 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = ","
-
 require("lazy").setup {
 	-- Utilities
 	'nvim-lua/plenary.nvim',
 
-	-- Colorschemes
-	'chriskempson/base16-vim', -- For writing
-	'junegunn/seoul256.vim',   -- For coding
-	'xiyaowong/nvim-transparent', -- Remove all background colors to make nvim transparent
+	-- Text formating
+	'windwp/nvim-autopairs',
+	'kylechui/nvim-surround',
 
-	-- FuzzyFinder / Moving around (between files)
-	{
-		'echasnovski/mini.files',
-		version = false
-	},
-	'nvim-telescope/telescope.nvim',
+	-- Comments
+	'numToStr/Comment.nvim',
+
+	-- Moving around (files/dirs)
 	'ThePrimeagen/harpoon',
 	{
-		'gelguy/wilder.nvim',
-		dependencies = {
+		'folke/flash.nvim',
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
+		keys = {
+			{ "s", mode = { "n", "o", "x" }, function() require("flash").jump() end, desc = "Flash" },
 			{
-				'liuchengxu/vim-clap',
-				build =
-				':Clap install-binary' -- This command doesn't really work, instead do :call clap#installer#build_maple()
+				"S",
+				mode = { "n", "o", "x" },
+				function() require("flash").treesitter() end,
+				desc =
+				"Flash Treesitter"
 			},
-			'romgrk/fzy-lua-native',
-			'nvim-tree/nvim-web-devicons'
+			{
+				"r",
+				mode = "o",
+				function() require("flash").remote() end,
+				desc =
+				"Remote Flash"
+			},
+			{
+				"R",
+				mode = { "o", "x" },
+				function() require("flash").treesitter_search() end,
+				desc =
+				"Treesitter Search"
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function() require("flash").toggle() end,
+				desc =
+				"Toggle Flash Search"
+			},
 		},
 	},
+
+	-- File explorer
+	'stevearc/oil.nvim',
+
+	-- Fuzzy finder
+	'nvim-telescope/telescope.nvim',
 
 	-- Syntax highlighting
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
-	-- LSP + CMP
-	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
-		dependencies = {
-			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
-			{
-				'williamboman/mason.nvim',
-				build = function()
-					pcall(vim.cmd, 'MasonUpdate')
-				end,
-			},
-			{ 'williamboman/mason-lspconfig.nvim' },
+	-- Colorscheme
+	{ 'rose-pine/neovim',                name = 'rose-pine' },
+	'marko-cerovac/material.nvim',
+	'rktjmp/lush.nvim',
+	{ dir = '~/tests/whitecube', },
 
-			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-nvim-lua' },
-
-			-- Snippets
-			{ 'L3MON4D3/LuaSnip' },
-			{ 'rafamadriz/friendly-snippets' },
-		}
-	},
-	'jose-elias-alvarez/null-ls.nvim',
-	'mattn/emmet-vim',
-	'MunifTanjim/prettier.nvim',
-	'Exafunction/codeium.vim',
+	-- LSP
+	'neovim/nvim-lspconfig',
 	{
-		"adalessa/laravel.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"tpope/vim-dotenv",
-			"MunifTanjim/nui.nvim",
-		},
-		cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
-		keys = {
-			{ "<leader>la", ":Laravel artisan<cr>" },
-			{ "<leader>lr", ":Laravel routes<cr>" },
-			{
-				"<leader>lt",
-				function()
-					require("laravel.tinker").send_to_tinker()
-				end,
-				mode = "v",
-				desc = "Laravel Application Routes",
-			},
-		},
-		event = { "VeryLazy" },
-		config = function()
-			require("laravel").setup()
-			require("telescope").load_extension "laravel"
+		'williamboman/mason.nvim',
+		build = function()
+			pcall(vim.cmd, 'MasonUpdate')
 		end,
 	},
+	'williamboman/mason-lspconfig.nvim',
+	'nvimdev/guard.nvim',
+	'folke/trouble.nvim',
+	'mattn/emmet-vim',
 	'jwalton512/vim-blade',
 
-	-- Clipboard management
-	'gbprod/yanky.nvim',
+	-- Completion
+	'hrsh7th/cmp-nvim-lsp',
+	'hrsh7th/cmp-buffer',
+	'hrsh7th/cmp-path',
+	'hrsh7th/cmp-cmdline',
+	'hrsh7th/nvim-cmp',
 
-	-- Git
-	'lewis6991/gitsigns.nvim',
-	'tpope/vim-fugitive',
+	-- Snippets
+	'L3MON4D3/LuaSnip',
+	'saadparwaiz1/cmp_luasnip',
 
-	-- Text formatting
-	'windwp/nvim-autopairs',
-	'kylechui/nvim-surround',
-
-	-- Moving around (in file)
-	{
-		'ggandor/leap.nvim',
-		dependencies = {
-			'tpope/vim-repeat',
-		}
-	},
-
-	-- Notifications
-	"rcarriga/nvim-notify",
-
-	-- Comments
-	'numToStr/Comment.nvim', -- Smart and powerful comment plugin for neovim
+	-- Status line
+	'tamton-aquib/staline.nvim',
 
 	-- Writing
 	'vimwiki/vimwiki',
 
 	-- Zen
-	{
-		'folke/zen-mode.nvim',
-		requires = { 'xiyaowong/nvim-transparent' }
-	},
-	'folke/twilight.nvim',
+	'folke/zen-mode.nvim'
 }
