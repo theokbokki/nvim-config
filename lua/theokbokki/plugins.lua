@@ -91,6 +91,11 @@ require("lazy").setup {
 	'mattn/emmet-vim',
 	'jwalton512/vim-blade',
 
+	-- Git
+	'theprimeagen/git-worktree.nvim',
+	'tpope/vim-fugitive',
+	'lewis6991/gitsigns.nvim',
+
 	-- Completion
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-buffer',
@@ -102,8 +107,23 @@ require("lazy").setup {
 	'L3MON4D3/LuaSnip',
 	'saadparwaiz1/cmp_luasnip',
 
-	-- Status line
-	'tamton-aquib/staline.nvim',
+	-- For the looks to impress the ladies
+	'nvim-lualine/lualine.nvim',
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		}
+	},
 
 	-- Writing
 	'vimwiki/vimwiki',
