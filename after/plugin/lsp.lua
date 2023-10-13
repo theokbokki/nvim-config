@@ -73,12 +73,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	buffer = buffer,
-	callback = function()
-		vim.lsp.buf.format { async = false }
-	end
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	buffer = buffer,
+-- 	callback = function()
+-- 		vim.lsp.buf.format { async = false }
+-- 	end
+-- })
 
 vim.diagnostic.config({ virtual_text = false })
 

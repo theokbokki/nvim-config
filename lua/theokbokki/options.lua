@@ -8,6 +8,7 @@ local options = {
 	number = true,
 	relativenumber = true,
 	statuscolumn = "%=%s %l    ",
+	colorcolumn="80,120",
 	scrolloff = 999,
 	shiftwidth = 4,
 	smartindent = true,

@@ -124,9 +124,14 @@ require("lazy").setup {
 			"rcarriga/nvim-notify",
 		}
 	},
+	{ 'krivahtoo/silicon.nvim',  build = './install.sh' },
 
 	-- Writing
-	'vimwiki/vimwiki',
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
 	-- Zen
 	'folke/zen-mode.nvim'
