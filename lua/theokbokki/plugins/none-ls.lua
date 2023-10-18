@@ -31,7 +31,25 @@ return {
 			-- setup formatters & linters
 			sources = {
 				formatting.prettierd.with({
-					extra_filetypes = { "svelte" },
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+						-- "vue",
+						"css",
+						"scss",
+						"less",
+						"html",
+						"json",
+						"jsonc",
+						"yaml",
+						"markdown",
+						"markdown.mdx",
+						"graphql",
+						"handlebars",
+						"svelte",
+					},
 				}),
 				formatting.stylua,
 				formatting.pint.with({
