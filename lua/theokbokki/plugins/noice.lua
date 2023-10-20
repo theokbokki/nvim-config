@@ -8,5 +8,12 @@ return {
 		--   If not available, we use `mini` as the fallback
 		-- "rcarriga/nvim-notify",
 	},
-	opts = {},
+	opts = {
+		cmdline = {
+			format = {
+				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+			},
+		},
+	},
 }
