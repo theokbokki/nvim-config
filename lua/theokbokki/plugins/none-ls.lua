@@ -57,7 +57,6 @@ return {
 					command = "pint",
 				}),
 				formatting.blade_formatter,
-				formatting.rustfmt,
 			},
 
 			-- configure format on save

@@ -6,6 +6,7 @@ local options = {
 	number = true, -- show absolute line number on cursor line (when relative number is on)
 	signcolumn = "number",
 	scrolloff = 999, -- keep current line in the center
+	shell = "/bin/zsh",
 	shiftwidth = 4, -- use four spaces for indent width
 	smartcase = true, -- make search case sensitive if there are multiple cases
 	swapfile = false, -- remove swap files
