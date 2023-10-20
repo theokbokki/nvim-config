@@ -16,6 +16,7 @@ return {
 				"phpcs",
 				"prettierd", -- prettier formatter
 				"stylua", -- lua formatter
+				"rustfmt",
 			},
 		})
 
@@ -56,6 +57,7 @@ return {
 					command = "pint",
 				}),
 				formatting.blade_formatter,
+				formatting.rustfmt,
 			},
 
 			-- configure format on save
