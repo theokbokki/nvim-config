@@ -30,14 +30,13 @@ return {
 			autopairs = {
 				enable = true,
 			},
-			indent = {
-				enable = true,
-				disable = {},
-			},
-			context_commentstring = {
-				enable = true,
-			},
+            indent = {
+                enable = true,
+                disable = {},
+            }
 		})
+
+        require('nvim-treesitter.configs').setup {}
 
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 

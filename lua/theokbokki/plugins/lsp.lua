@@ -5,6 +5,7 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
+	    "simrat39/rust-tools.nvim",
 	},
 	config = function()
 		local mason = require("mason")
@@ -16,6 +17,8 @@ return {
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 		local opts = { noremap = true, silent = true }
+
+		vim.diagnostic.config({ virtual_text = false })
 
 		-- show diagnostics for line
 		keymap.set("n", "<leader>d", vim.diagnostic.open_float)
@@ -79,24 +82,6 @@ return {
 					})
 				end,
 
-				["emmet_ls"] = function()
-					lspconfig.emmet_ls.setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-						filetypes = {
-							"astro",
-							"css",
-							"html",
-							"scss",
-							"svelte",
-							"vue",
-							"php",
-							"blade",
-							"rust",
-						},
-					})
-				end,
-
 				["lua_ls"] = function()
 					lspconfig.lua_ls.setup({
 						capabilities = capabilities,
@@ -116,6 +101,23 @@ return {
 					require("rust-tools").setup({
 						on_attach = on_attach,
 						capabilities = capabilities,
+					})
+				end,
+
+				["emmet_ls"] = function()
+					lspconfig.emmet_ls.setup({
+						capabilities = capabilities,
+						on_attach = on_attach,
+						filetypes = {
+							"astro",
+							"htmldjango",
+							"css",
+							"html",
+							"scss",
+							"svelte",
+							"vue",
+							"blade",
+						},
 					})
 				end,
 			},
