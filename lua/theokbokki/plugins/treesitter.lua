@@ -49,10 +49,20 @@ return {
 			filetype = "blade",
 		}
 
+        -- Change blade filetypes
 		vim.api.nvim_create_augroup("BladeFiltypeRelated", { clear = true })
 		vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 			pattern = "*.blade.php",
 			command = "set ft=blade",
 		})
+
+        -- Change gohtml filetypes
+		vim.api.nvim_create_augroup("TemplFiltypeRelated", { clear = true })
+		vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+			pattern = "*.gohtml",
+			command = "set ft=gohtml",
+		})
+
+        vim.filetype.add({ extension = { templ = "templ" }})
 	end,
 }

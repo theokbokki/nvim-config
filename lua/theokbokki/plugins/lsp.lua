@@ -64,6 +64,7 @@ return {
 			ensure_installed = {
 				"emmet_ls",
 				"gopls",
+                "templ",
 				"html",
 				"jsonls",
 				"lua_ls",
@@ -117,6 +118,9 @@ return {
 							"svelte",
 							"vue",
 							"blade",
+                            "gohtml",
+                            "templ",
+                            "eruby"
 						},
 					})
 				end,

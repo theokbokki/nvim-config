@@ -4,7 +4,11 @@ local map = vim.keymap.set
 map("i", "jj", "<ESC>")
 
 -- Select all
-map("n", "<C-a>", "gg<S-v>G")
+map("n", "<C-a>", "gg<S-v>G") 
+
+-- Move lines up or down with correct indent
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Move around windows
 map("n", "<C-h>", "<C-w>h")
