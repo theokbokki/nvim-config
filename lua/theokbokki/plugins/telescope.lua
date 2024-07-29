@@ -21,18 +21,35 @@ return {
                     n = {
                         ['q'] = actions.close,
                     },
-                }
+                },
+                border = {
+                    prompt = { 1, 1, 1, 1 },
+                    results = { 1, 1, 1, 1 },
+                    preview = { 1, 1, 1, 1 },
+                },
+                borderchars = {
+                    results = { " ", " ", "─", "│", "│", " ", "─", "└" },
+                    prompt = { "─", " ", " ", "│", "┌", "─", " ", "│" },
+                    preview = { "─", "│", "─", "│", "┬", "┐", "┘", "┴" },
+                },
+                layout_strategy = "horizontal",
+                layout_config = {
+                    horizontal = {
+                        prompt_position = "top",
+                    },
+                },
+                sorting_strategy = "ascending",
             },
             pickers = {
-                find_files = {
-                    theme = "ivy",
-                },
-                live_grep = {
-                    theme = "ivy",
-                },
-                buffers = {
-                    theme = "ivy",
-                },
+                -- find_files = {
+                --     theme = "ivy",
+                -- },
+                -- live_grep = {
+                --     theme = "ivy",
+                -- },
+                -- buffers = {
+                --     theme = "ivy",
+                -- },
             },
         }
     end,

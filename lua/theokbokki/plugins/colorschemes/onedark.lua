@@ -20,5 +20,6 @@ return {
         })
 
         -- vim.cmd([[colorscheme onedark]])
+        -- vim.cmd([[set bg=light]])
     end,
 }

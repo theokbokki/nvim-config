@@ -13,14 +13,14 @@ return {
             },
         })
 
-        vim.cmd([[colorscheme gruvbox]])
-        vim.cmd([[
-            augroup CustomCommentCollor
-            autocmd!
-            autocmd VimEnter * hi GitSignsAdd guibg=#3C3836
-            autocmd VimEnter * hi GitSignsChange guibg=#3C3836
-            autocmd VimEnter * hi GitSignsDelete guibg=#3C3836
-            augroup END
-        ]])
+        -- vim.cmd([[colorscheme gruvbox]])
+        -- vim.cmd([[
+        --     augroup CustomCommentCollor
+        --     autocmd!
+        --     autocmd VimEnter * hi GitSignsAdd guibg=#3C3836
+        --     autocmd VimEnter * hi GitSignsChange guibg=#3C3836
+        --     autocmd VimEnter * hi GitSignsDelete guibg=#3C3836
+        --     augroup END
+        -- ]])
     end,
 }

@@ -16,9 +16,23 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
+        capabilities.textDocument.foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true
+        }
 		local opts = { noremap = true, silent = true }
 
-		vim.diagnostic.config({ virtual_text = false })
+		vim.diagnostic.config({
+            virtual_text = false,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "●",
+                    [vim.diagnostic.severity.WARN] = "●",
+                    [vim.diagnostic.severity.HINT] = "●",
+                    [vim.diagnostic.severity.INFO] = "●",
+                },
+            },
+        })
 
 		-- show diagnostics for line
 		keymap.set("n", "<leader>d", vim.diagnostic.open_float)
@@ -27,6 +41,9 @@ return {
 
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(bufnr, true)
+            end
 
 			-- go to declaration
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -124,6 +141,21 @@ return {
 						},
 					})
 				end,
+
+                ["phpactor"] = function()
+                    lspconfig.phpactor.setup{
+                        on_attach = on_attach,
+                        init_options = {
+                            ["language_server_phpstan.enabled"] = false,
+                            ["language_server_psalm.enabled"] = false,
+                            ["language_server_php_cs_fixer.enabled"] = false,
+                            ["php_code_sniffer.enabled"] = false,
+                            ["language_server_worse_reflection.inlay_hints.enable"] = false,
+                            -- ["language_server_worse_reflection.inlay_hints.params"] = true,
+                            -- ["language_server_worse_reflection.inlay_hints.types"] = true,
+                        }
+                    }
+                end
 			},
 		})
 	end,

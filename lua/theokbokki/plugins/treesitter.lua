@@ -32,7 +32,7 @@ return {
 			},
             indent = {
                 enable = true,
-                disable = {},
+                disable = {"php"},
             }
 		})
 
@@ -63,6 +63,18 @@ return {
 			command = "set ft=gohtml",
 		})
 
+		vim.api.nvim_create_augroup("Shader", { clear = true })
+		vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+			pattern = "*.frag",
+			command = "set ft=glsl",
+		})
+
         vim.filetype.add({ extension = { templ = "templ" }})
+
+		vim.api.nvim_create_augroup("PhpAutoindent", { clear = true })
+		vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+			pattern = "*.php",
+			command = "set ai",
+        })
 	end,
 }
