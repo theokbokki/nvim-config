@@ -43,12 +43,11 @@ require("transparent")
 
 -- Fuzzy finder 
 require("fzf-lua").setup({
-    actions = {
-        files = {
-            true,
-            ["ctrl-q"] = FzfLua.actions.file_sel_to_qf,
-        }
-    } 
+    keymap = {
+        fzf = {
+            ["ctrl-q"] = "select-all+accept",
+        },
+    },
 })
 
 vim.keymap.set("n", "<leader>f", function() FzfLua.files() end)
@@ -57,7 +56,17 @@ vim.keymap.set("n", "<leader>lg", function() FzfLua.live_grep() end)
 vim.keymap.set("n", "gd", function() FzfLua.lsp_definitions() end)
 
 -- File explorer
-require("oil").setup()
+require("oil").setup({
+    delete_to_trash = true,
+
+    view_options = {
+        show_hidden = true,
+
+        is_always_hidden = function(name, bufnr)
+            return name == ".DS_Store"
+        end,
+    }
+})
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>")
 
 -- Git
