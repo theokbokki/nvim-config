@@ -36,10 +36,14 @@ vim.pack.add({
     { src = "https://github.com/mason-org/mason.nvim", name = "mason" },
     { src = "https://github.com/xiyaowong/transparent.nvim", name = "transparent" },
     { src = "https://github.com/lewis6991/gitsigns.nvim", name = "gitsigns" },
+    { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
+    { src = "https://github.com/projekt0n/github-nvim-theme" },
 })
 
 -- Colorscheme
 require("transparent")
+require('github-theme').setup()
+vim.cmd('colorscheme github_light')
 
 -- Fuzzy finder 
 require("fzf-lua").setup({
@@ -71,6 +75,21 @@ vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>")
 
 -- Git
 require("gitsigns")
+
+-- Treesitter
+require("tree-sitter-manager").setup({
+    ensure_installed = {
+        "php",
+        "php_only",
+        "javascript",
+        "vue",
+        "jsx",
+        "scss",
+        "css",
+        "lua",
+    },
+    auto_install = true,
+});
 
 -- LSP
 require("mason").setup()
